@@ -1,4 +1,4 @@
-package com.github.sukhiboi.matrix;
+package com.step.sukhiboi.matrix;
 
 public class Matrix {
   private final int rows;
