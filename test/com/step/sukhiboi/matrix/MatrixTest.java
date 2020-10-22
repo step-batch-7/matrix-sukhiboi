@@ -62,4 +62,20 @@ public class MatrixTest {
 
     assertTrue(matrix1.subtract(matrix2).equals(expected));
   }
+
+  @Test
+  public void shouldMultiplyTwoMatrix() {
+    System.out.println(name.getMethodName());
+
+    int[][] values1 = { { 10, 10 }, { 10, 10 }, { 10, 10 } };
+    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
+
+    int[][] values2 = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
+    Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
+
+    int[][] expectedValues = { { 40, 40 }, { 40, 40 } };
+    Matrix expected = Matrix.createMatrix(2, 2, expectedValues);
+
+    assertTrue(matrix1.multiply(matrix2).equals(expected));
+  }
 }
