@@ -51,10 +51,10 @@ public class MatrixTest {
   public void shouldSubtractTwoMatrix() {
     System.out.println(name.getMethodName());
 
-    int[][] values1 = { { 10, 10 }, { 10, 10 }, { 10, 10 } };
+    int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
-    int[][] values2 = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
+    int[][] values2 = { { 2, 2 }, { 2, 2 } };
     Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
 
     int[][] expectedValues = { { 8, 8 }, { 8, 8 } };
@@ -67,10 +67,10 @@ public class MatrixTest {
   public void shouldMultiplyTwoMatrix() {
     System.out.println(name.getMethodName());
 
-    int[][] values1 = { { 10, 10 }, { 10, 10 }, { 10, 10 } };
+    int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
-    int[][] values2 = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
+    int[][] values2 = { { 2, 2 }, { 2, 2 } };
     Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
 
     int[][] expectedValues = { { 40, 40 }, { 40, 40 } };
