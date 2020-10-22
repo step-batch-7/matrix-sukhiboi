@@ -74,6 +74,17 @@ public class MatrixTest {
   }
 
   @Test
+  public void shouldReturnNullIfDifferentSizeMatrixSubtracted() {
+    int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
+    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
+
+    int[][] values2 = { { 2, 2 }, { 2, 2 } };
+    Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
+
+    assertNull(matrix1.subtract(matrix2));
+  }
+
+  @Test
   public void shouldMultiplyTwoMatrix() {
     int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
