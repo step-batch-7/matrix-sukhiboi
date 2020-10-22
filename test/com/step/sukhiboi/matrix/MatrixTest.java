@@ -130,4 +130,12 @@ public class MatrixTest {
 
     assertEquals(matrix1.determinant(), -7);
   }
+
+  @Test
+  public void shouldReturnZeroIfANonSquareMatrixGiven() {
+    int[][] values1 = { { 1, 2, 1 }, { 1, 3, 4 } };
+    Matrix matrix1 = Matrix.createMatrix(2, 3, values1);
+
+    assertEquals(matrix1.determinant(), 0);
+  }
 }
