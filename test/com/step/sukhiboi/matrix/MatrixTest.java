@@ -9,6 +9,8 @@ import org.junit.Test;
 
 public class MatrixTest {
 
+  //equals
+
   @Test
   public void shouldReturnTrueIfSameMatrixCompared() {
     int[][] values1 = { { 1, 1 }, { 1, 1 } };
@@ -60,6 +62,8 @@ public class MatrixTest {
     assertFalse(desc, matrix1.equals(null));
   }
 
+  //add
+
   @Test
   public void shouldAddTwoMatrixes() {
     int[][] values1 = { { 1, 1 }, { 1, 1 } };
@@ -87,6 +91,8 @@ public class MatrixTest {
     assertNull(desc, matrix1.add(matrix2));
   }
 
+  //subtract
+
   @Test
   public void shouldSubtractTwoMatrixes() {
     int[][] values1 = { { 10, 10 }, { 10, 10 } };
@@ -113,6 +119,8 @@ public class MatrixTest {
     String desc = "should return null if 2 different sized matrix subtracted";
     assertNull(desc, matrix1.subtract(matrix2));
   }
+
+  //multiply
 
   @Test
   public void shouldMultiplyTwoMatrixes() {
@@ -157,6 +165,8 @@ public class MatrixTest {
       "should return null if the row count and column count are not same";
     assertNull(desc, matrix1.multiply(matrix2));
   }
+
+  //determinant
 
   @Test
   public void shouldReturnDeterminantOfMatrix() {
