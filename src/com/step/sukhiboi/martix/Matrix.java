@@ -30,8 +30,7 @@ public class Matrix {
     if (this == obj) return true;
     if (!(obj instanceof Matrix)) return false;
     Matrix matrix = (Matrix) obj;
-    if (this.rows != matrix.rows) return false;
-    if (this.columns != matrix.columns) return false;
+    if (!this.isSizeSame(matrix)) return false;
 
     for (int rows = 0; rows < this.rows; rows++) {
       for (int column = 0; column < this.columns; column++) {
