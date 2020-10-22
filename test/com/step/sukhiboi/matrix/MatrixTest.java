@@ -78,4 +78,14 @@ public class MatrixTest {
 
     assertTrue(matrix1.multiply(matrix2).equals(expected));
   }
+
+  @Test
+  public void shouldReturnDeterminantOfMatrix() {
+    System.out.println(name.getMethodName());
+
+    int[][] values1 = { { 10, 2 }, { 12, 10 } };
+    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
+
+    assertEquals(matrix1.determinant(), 76);
+  }
 }
