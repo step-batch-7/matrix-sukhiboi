@@ -3,17 +3,23 @@ package com.step.sukhiboi.matrix;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class MatrixTest {
+  private Matrix matrix1;
+  private Matrix matrix2;
+
+  @Before
+  public void initializeTestFields() {
+    matrix1 = Matrix.createMatrix(2, 2, new int[][] { { 1, 1 }, { 1, 1 } });
+    matrix2 = Matrix.createMatrix(2, 2, new int[][] { { 2, 2 }, { 2, 2 } });
+  }
 
   //toString
 
   @Test
   public void shouldReturnStringRepresentationOfMatrix() {
-    int[][] values1 = { { 1, 1 }, { 1, 1 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
-
     assertEquals(matrix1.toString(), "1 1 \n1 1 \n");
   }
 
@@ -21,47 +27,32 @@ public class MatrixTest {
 
   @Test
   public void shouldReturnTrueIfSameMatrixCompared() {
-    int[][] values1 = { { 1, 1 }, { 1, 1 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
-
     assertEquals(matrix1, matrix1);
   }
 
   @Test
   public void shouldReturnFalseIfDifferentObjectCompared() {
-    int[][] values1 = { { 1, 1 }, { 1, 1 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
-
     assertFalse(matrix1.equals(new Object()));
   }
 
   @Test
   public void shouldReturnFalseIfDifferentSizedMatrixCompared() {
     int[][] values1 = { { 1 }, { 1 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 1, values1);
+    matrix1 = Matrix.createMatrix(2, 1, values1);
 
     int[][] values2 = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
-    Matrix matrix2 = Matrix.createMatrix(3, 2, values2);
+    matrix2 = Matrix.createMatrix(3, 2, values2);
 
     assertFalse(matrix1.equals(matrix2));
   }
 
   @Test
   public void shouldReturnFalseIfDifferentMatrixCompared() {
-    int[][] values1 = { { 1 }, { 1 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 1, values1);
-
-    int[][] values2 = { { 2 }, { 2 } };
-    Matrix matrix2 = Matrix.createMatrix(2, 1, values2);
-
     assertFalse(matrix1.equals(matrix2));
   }
 
   @Test
   public void shouldReturnFalseIfNullCompared() {
-    int[][] values1 = { { 1, 1 }, { 1, 1 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
-
     assertFalse(matrix1.equals(null));
   }
 
@@ -69,12 +60,6 @@ public class MatrixTest {
 
   @Test
   public void shouldAddTwoMatrixes() {
-    int[][] values1 = { { 1, 1 }, { 1, 1 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
-
-    int[][] values2 = { { 2, 2 }, { 2, 2 } };
-    Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
-
     int[][] expectedValues = { { 3, 3 }, { 3, 3 } };
     Matrix expected = Matrix.createMatrix(2, 2, expectedValues);
 
@@ -84,10 +69,7 @@ public class MatrixTest {
   @Test
   public void shouldReturnNullIfDifferentSizeMatrixesAdded() {
     int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
-    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
-
-    int[][] values2 = { { 2, 2 }, { 2, 2 } };
-    Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
+    matrix1 = Matrix.createMatrix(3, 2, values1);
 
     assertEquals(matrix1.add(matrix2), null);
   }
@@ -96,13 +78,7 @@ public class MatrixTest {
 
   @Test
   public void shouldSubtractTwoMatrixes() {
-    int[][] values1 = { { 10, 10 }, { 10, 10 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
-
-    int[][] values2 = { { 2, 2 }, { 2, 2 } };
-    Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
-
-    int[][] expectedValues = { { 8, 8 }, { 8, 8 } };
+    int[][] expectedValues = { { -1, -1 }, { -1, -1 } };
     Matrix expected = Matrix.createMatrix(2, 2, expectedValues);
 
     assertEquals(matrix1.subtract(matrix2), expected);
@@ -113,23 +89,14 @@ public class MatrixTest {
     int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
 
-    int[][] values2 = { { 2, 2 }, { 2, 2 } };
-    Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
-
     assertEquals(matrix1.subtract(matrix2), null);
   }
 
-  //multiply
+  // multiply
 
   @Test
   public void shouldMultiplyTwoMatrixes() {
-    int[][] values1 = { { 10, 10 }, { 10, 10 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
-
-    int[][] values2 = { { 2, 2 }, { 2, 2 } };
-    Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
-
-    int[][] expectedValues = { { 40, 40 }, { 40, 40 } };
+    int[][] expectedValues = { { 4, 4 }, { 4, 4 } };
     Matrix expected = Matrix.createMatrix(2, 2, expectedValues);
 
     assertEquals(matrix1.multiply(matrix2), expected);
@@ -138,10 +105,10 @@ public class MatrixTest {
   @Test
   public void shouldMultiplyTwoMatrixesOfDifferentSizes() {
     int[][] values1 = { { 10, 10 }, { 10, 10 }, { 10, 10 } };
-    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
+    matrix1 = Matrix.createMatrix(3, 2, values1);
 
     int[][] values2 = { { 2, 2, 2 }, { 2, 2, 2 } };
-    Matrix matrix2 = Matrix.createMatrix(2, 3, values2);
+    matrix2 = Matrix.createMatrix(2, 3, values2);
 
     int[][] expectedValues = { { 40, 40, 40 }, { 40, 40, 40 }, { 40, 40, 40 } };
     Matrix expected = Matrix.createMatrix(3, 3, expectedValues);
@@ -151,11 +118,8 @@ public class MatrixTest {
 
   @Test
   public void shouldReturnNullIfMatrixesWithDifferentRowAndColumnSizeMultiplied() {
-    int[][] values1 = { { 10, 10 }, { 10, 10 }, { 10, 10 } };
-    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
-
-    int[][] values2 = { { 2, 2 } };
-    Matrix matrix2 = Matrix.createMatrix(1, 2, values2);
+    int[][] values1 = { { 10, 10, 10 }, { 10, 10, 10 } };
+    Matrix matrix1 = Matrix.createMatrix(2, 3, values1);
 
     assertEquals(matrix1.multiply(matrix2), null);
   }
@@ -164,10 +128,7 @@ public class MatrixTest {
 
   @Test
   public void shouldReturnDeterminantOfMatrix() {
-    int[][] values1 = { { 10, 2 }, { 12, 10 } };
-    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
-
-    assertEquals(matrix1.determinant(), 76);
+    assertEquals(matrix1.determinant(), 0);
   }
 
   @Test
