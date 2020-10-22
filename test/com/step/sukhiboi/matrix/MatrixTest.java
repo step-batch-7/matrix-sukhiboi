@@ -122,4 +122,12 @@ public class MatrixTest {
 
     assertEquals(matrix1.determinant(), 76);
   }
+
+  @Test
+  public void shouldReturnDeterminantOfA3By3Matrix() {
+    int[][] values1 = { { 1, 2, 1 }, { 1, 3, 4 }, { 1, 5, 3 } };
+    Matrix matrix1 = Matrix.createMatrix(3, 3, values1);
+
+    assertEquals(matrix1.determinant(), -7);
+  }
 }
