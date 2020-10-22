@@ -27,7 +27,7 @@ public class MatrixTest {
   }
 
   @Test
-  public void shouldAddTwoMatrix() {
+  public void shouldAddTwoMatrixes() {
     int[][] values1 = { { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
@@ -41,7 +41,7 @@ public class MatrixTest {
   }
 
   @Test
-  public void shouldReturnNullIfDifferentSizeMatrixAdded() {
+  public void shouldReturnNullIfDifferentSizeMatrixesAdded() {
     int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
 
@@ -60,7 +60,7 @@ public class MatrixTest {
   }
 
   @Test
-  public void shouldSubtractTwoMatrix() {
+  public void shouldSubtractTwoMatrixes() {
     int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
@@ -74,7 +74,7 @@ public class MatrixTest {
   }
 
   @Test
-  public void shouldReturnNullIfDifferentSizeMatrixSubtracted() {
+  public void shouldReturnNullIfDifferentSizeMatrixesSubtracted() {
     int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
 
@@ -93,7 +93,7 @@ public class MatrixTest {
   }
 
   @Test
-  public void shouldMultiplyTwoMatrix() {
+  public void shouldMultiplyTwoMatrixes() {
     int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
@@ -107,7 +107,7 @@ public class MatrixTest {
   }
 
   @Test
-  public void shouldMultiplyTwoMatrixOfDifferentSizes() {
+  public void shouldMultiplyTwoMatrixesOfDifferentSizes() {
     int[][] values1 = { { 10, 10 }, { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
 
@@ -118,6 +118,17 @@ public class MatrixTest {
     Matrix expected = Matrix.createMatrix(3, 3, expectedValues);
 
     assertTrue(matrix1.multiply(matrix2).equals(expected));
+  }
+
+  @Test
+  public void shouldReturnNullIfMatrixesWithDifferentRowAndColumnSizeMultiplied() {
+    int[][] values1 = { { 10, 10 }, { 10, 10 }, { 10, 10 } };
+    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
+
+    int[][] values2 = { { 2, 2 } };
+    Matrix matrix2 = Matrix.createMatrix(1, 2, values2);
+
+    assertNull(matrix1.multiply(matrix2));
   }
 
   @Test
