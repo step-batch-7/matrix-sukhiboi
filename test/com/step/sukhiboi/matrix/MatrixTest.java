@@ -85,6 +85,14 @@ public class MatrixTest {
   }
 
   @Test
+  public void shouldReturnNullIfNullSubtracted() {
+    int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
+    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
+
+    assertNull(matrix1.subtract(null));
+  }
+
+  @Test
   public void shouldMultiplyTwoMatrix() {
     int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
