@@ -5,17 +5,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestName;
 
 public class MatrixTest {
-  @Rule
-  public final TestName name = new TestName();
 
   @Test
   public void shouldReturnTrueIfSameMatrixCompared() {
-    System.out.println(name.getMethodName());
     int[][] values1 = { { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
@@ -24,7 +19,6 @@ public class MatrixTest {
 
   @Test
   public void shouldReturnFalseIfDifferentObjectCompared() {
-    System.out.println(name.getMethodName());
     int[][] values1 = { { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
@@ -34,8 +28,6 @@ public class MatrixTest {
 
   @Test
   public void shouldAddTwoMatrix() {
-    System.out.println(name.getMethodName());
-
     int[][] values1 = { { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
@@ -50,8 +42,6 @@ public class MatrixTest {
 
   @Test
   public void shouldReturnNullIfDifferentSizeMatrixAdded() {
-    System.out.println(name.getMethodName());
-
     int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
 
@@ -61,10 +51,8 @@ public class MatrixTest {
     assertNull(matrix1.add(matrix2));
   }
 
-    @Test
+  @Test
   public void shouldReturnNullIfNullAdded() {
-    System.out.println(name.getMethodName());
-
     int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
 
@@ -73,8 +61,6 @@ public class MatrixTest {
 
   @Test
   public void shouldSubtractTwoMatrix() {
-    System.out.println(name.getMethodName());
-
     int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
@@ -89,8 +75,6 @@ public class MatrixTest {
 
   @Test
   public void shouldMultiplyTwoMatrix() {
-    System.out.println(name.getMethodName());
-
     int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
@@ -105,8 +89,6 @@ public class MatrixTest {
 
   @Test
   public void shouldReturnDeterminantOfMatrix() {
-    System.out.println(name.getMethodName());
-
     int[][] values1 = { { 10, 2 }, { 12, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
 
