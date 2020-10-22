@@ -61,6 +61,16 @@ public class MatrixTest {
     assertNull(matrix1.add(matrix2));
   }
 
+    @Test
+  public void shouldReturnNullIfNullAdded() {
+    System.out.println(name.getMethodName());
+
+    int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
+    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
+
+    assertNull(matrix1.add(null));
+  }
+
   @Test
   public void shouldSubtractTwoMatrix() {
     System.out.println(name.getMethodName());

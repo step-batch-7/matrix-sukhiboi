@@ -57,6 +57,7 @@ public class Matrix {
   }
 
   public Matrix add(Matrix anotherMatrix) {
+    if (anotherMatrix == null) return null;
     Matrix newMatrix = new Matrix(this.rows, this.columns);
     if (!this.isSizeSame(anotherMatrix)) return null;
     for (int i = 0; i < this.rows; i++) {
