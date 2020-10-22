@@ -9,6 +9,17 @@ import org.junit.Test;
 
 public class MatrixTest {
 
+  //toString
+
+  @Test
+  public void shouldReturnStringRepresentationOfMatrix() {
+    int[][] values1 = { { 1, 1 }, { 1, 1 } };
+    Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
+
+    String desc = "should return sting representation of matrix";
+    assertEquals(desc, matrix1.toString(), "1 1 \n1 1 \n");
+  }
+
   //equals
 
   @Test
