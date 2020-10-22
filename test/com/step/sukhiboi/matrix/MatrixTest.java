@@ -28,6 +28,18 @@ public class MatrixTest {
   }
 
   @Test
+  public void shouldReturnFalseIfDifferentSizedMatrixCompared() {
+    int[][] values1 = { { 1 }, { 1 } };
+    Matrix matrix1 = Matrix.createMatrix(2, 1, values1);
+
+    int[][] values2 = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
+    Matrix matrix2 = Matrix.createMatrix(3, 2, values2);
+
+    String desc = "should return false if 2 different sized matrix compared";
+    assertFalse(desc, matrix1.equals(matrix2));
+  }
+
+  @Test
   public void shouldReturnFalseIfNullCompared() {
     int[][] values1 = { { 1, 1 }, { 1, 1 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
