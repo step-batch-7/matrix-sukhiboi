@@ -52,14 +52,6 @@ public class MatrixTest {
   }
 
   @Test
-  public void shouldReturnNullIfNullAdded() {
-    int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
-    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
-
-    assertNull(matrix1.add(null));
-  }
-
-  @Test
   public void shouldSubtractTwoMatrixes() {
     int[][] values1 = { { 10, 10 }, { 10, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
@@ -82,14 +74,6 @@ public class MatrixTest {
     Matrix matrix2 = Matrix.createMatrix(2, 2, values2);
 
     assertNull(matrix1.subtract(matrix2));
-  }
-
-  @Test
-  public void shouldReturnNullIfNullSubtracted() {
-    int[][] values1 = { { 1, 1 }, { 1, 1 }, { 1, 1 } };
-    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
-
-    assertNull(matrix1.subtract(null));
   }
 
   @Test
