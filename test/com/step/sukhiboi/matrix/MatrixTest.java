@@ -107,6 +107,20 @@ public class MatrixTest {
   }
 
   @Test
+  public void shouldMultiplyTwoMatrixOfDifferentSizes() {
+    int[][] values1 = { { 10, 10 }, { 10, 10 }, { 10, 10 } };
+    Matrix matrix1 = Matrix.createMatrix(3, 2, values1);
+
+    int[][] values2 = { { 2, 2, 2 }, { 2, 2, 2 } };
+    Matrix matrix2 = Matrix.createMatrix(2, 3, values2);
+
+    int[][] expectedValues = { { 40, 40, 40 }, { 40, 40, 40 }, { 40, 40, 40 } };
+    Matrix expected = Matrix.createMatrix(3, 3, expectedValues);
+
+    assertTrue(matrix1.multiply(matrix2).equals(expected));
+  }
+
+  @Test
   public void shouldReturnDeterminantOfMatrix() {
     int[][] values1 = { { 10, 2 }, { 12, 10 } };
     Matrix matrix1 = Matrix.createMatrix(2, 2, values1);
