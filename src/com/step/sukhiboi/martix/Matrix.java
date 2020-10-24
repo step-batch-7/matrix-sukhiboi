@@ -11,11 +11,22 @@ public class Matrix {
     this.values = new int[rows][columns];
   }
 
-  public static Matrix createMatrix(int rows, int columns, int[][] values) {
+  private static boolean isValidMatrixValues(
+    int rows,
+    int columns,
+    int[][] values
+  ) {
     if (values.length != rows) return false;
-    Matrix newMatrix = new Matrix(rows, columns);
     for (int row = 0; row < rows; row++) {
       if (values[row].length != columns) return false;
+    }
+    return true;
+  }
+
+  public static Matrix createMatrix(int rows, int columns, int[][] values) {
+    if (!isValidMatrixValues(rows, columns, values)) return null;
+    Matrix newMatrix = new Matrix(rows, columns);
+    for (int row = 0; row < rows; row++) {
       for (int cell = 0; cell < columns; cell++) {
         newMatrix.values[row][cell] = values[row][cell];
       }
