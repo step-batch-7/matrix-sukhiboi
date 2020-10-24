@@ -143,6 +143,12 @@ public class Matrix {
   @Override
   public String toString() {
     StringBuilder representation = new StringBuilder();
+    representation
+      .append("\nSize: ")
+      .append(this.rows)
+      .append(" Rows, ")
+      .append(this.columns)
+      .append(" Columns\n");
     for (int row[] : this.values) {
       for (int cell : row) {
         representation.append(cell).append(" ");

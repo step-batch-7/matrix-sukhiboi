@@ -20,7 +20,7 @@ public class MatrixTest {
 
   @Test
   public void shouldReturnStringRepresentationOfMatrix() {
-    assertEquals(matrix1.toString(), "1 1 \n1 1 \n");
+    assertEquals(matrix1.toString(), "\nSize: 2 Rows, 2 Columns\n1 1 \n1 1 \n");
   }
 
   //equals
