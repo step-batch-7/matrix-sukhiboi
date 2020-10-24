@@ -11,18 +11,6 @@ public class Matrix {
     this.values = new int[rows][columns];
   }
 
-  private static boolean isValidMatrixValues(
-    int rows,
-    int columns,
-    int[][] values
-  ) {
-    if (values.length != rows) return false;
-    for (int row = 0; row < rows; row++) {
-      if (values[row].length != columns) return false;
-    }
-    return true;
-  }
-
   public static Matrix createMatrix(int rows, int columns, int[][] values) {
     if (!isValidMatrixValues(rows, columns, values)) return null;
     Matrix newMatrix = new Matrix(rows, columns);
@@ -32,40 +20,6 @@ public class Matrix {
       }
     }
     return newMatrix;
-  }
-
-  private boolean isSizeSame(Matrix matrix) {
-    return this.rows == matrix.rows && this.columns == matrix.columns;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (!(obj instanceof Matrix)) return false;
-    Matrix matrix = (Matrix) obj;
-    if (!this.isSizeSame(matrix)) return false;
-
-    for (int rows = 0; rows < this.rows; rows++) {
-      for (int column = 0; column < this.columns; column++) {
-        if (this.values[rows][column] != matrix.values[rows][column]) {
-          return false;
-        }
-      }
-    }
-
-    return true;
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder representation = new StringBuilder();
-    for (int row[] : this.values) {
-      for (int cell : row) {
-        representation.append(cell).append(" ");
-      }
-      representation.append("\n");
-    }
-    return representation.toString();
   }
 
   public Matrix add(Matrix anotherMatrix) {
@@ -115,6 +69,41 @@ public class Matrix {
     return newMatrix;
   }
 
+  public int determinant() {
+    if (this.rows != this.columns) return 0;
+    if (this.rows == 2) {
+      return (
+        this.values[0][0] *
+        this.values[1][1] -
+        this.values[0][1] *
+        this.values[1][0]
+      );
+    }
+    int result = 0;
+    for (int col = 0; col < this.columns; col++) {
+      int sign = col % 2 != 0 ? -1 : 1;
+      result +=
+        sign * this.values[0][col] * this.getSubMatrix(0, col).determinant();
+    }
+    return result;
+  }
+
+  private static boolean isValidMatrixValues(
+    int rows,
+    int columns,
+    int[][] values
+  ) {
+    if (values.length != rows) return false;
+    for (int row = 0; row < rows; row++) {
+      if (values[row].length != columns) return false;
+    }
+    return true;
+  }
+
+  private boolean isSizeSame(Matrix matrix) {
+    return this.rows == matrix.rows && this.columns == matrix.columns;
+  }
+
   private Matrix getSubMatrix(int rowIdx, int colIdx) {
     Matrix subMatrix = new Matrix(this.rows - 1, this.columns - 1);
     for (int row = 0, sRow = 0; row < this.rows; row++) {
@@ -133,22 +122,33 @@ public class Matrix {
     return subMatrix;
   }
 
-  public int determinant() {
-    if (this.rows != this.columns) return 0;
-    if (this.rows == 2) {
-      return (
-        this.values[0][0] *
-        this.values[1][1] -
-        this.values[0][1] *
-        this.values[1][0]
-      );
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof Matrix)) return false;
+    Matrix matrix = (Matrix) obj;
+    if (!this.isSizeSame(matrix)) return false;
+
+    for (int rows = 0; rows < this.rows; rows++) {
+      for (int column = 0; column < this.columns; column++) {
+        if (this.values[rows][column] != matrix.values[rows][column]) {
+          return false;
+        }
+      }
     }
-    int result = 0;
-    for (int col = 0; col < this.columns; col++) {
-      int sign = col % 2 != 0 ? -1 : 1;
-      result +=
-        sign * this.values[0][col] * this.getSubMatrix(0, col).determinant();
+
+    return true;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder representation = new StringBuilder();
+    for (int row[] : this.values) {
+      for (int cell : row) {
+        representation.append(cell).append(" ");
+      }
+      representation.append("\n");
     }
-    return result;
+    return representation.toString();
   }
 }
