@@ -110,8 +110,8 @@ public class Matrix {
     @Override
     public String toString() {
         StringBuilder matrix = new StringBuilder();
-        for (int[] row: this.values){
-            for(int cell: row){
+        for (int[] row : this.values) {
+            for (int cell : row) {
                 matrix.append(cell).append(" ");
             }
             matrix.append("\n");
