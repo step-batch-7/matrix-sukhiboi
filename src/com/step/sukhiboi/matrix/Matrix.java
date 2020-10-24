@@ -45,16 +45,6 @@ public class Matrix {
         return newMatrix;
     }
 
-    public Matrix multiply(int multiplier) {
-        Matrix newMatrix = new Matrix(this.rows, this.columns);
-        for (int i = 0; i < this.rows; i++) {
-            for (int j = 0; j < this.columns; j++) {
-                newMatrix.values[i][j] = this.values[i][j] * multiplier;
-            }
-        }
-        return newMatrix;
-    }
-
     public Matrix multiply(Matrix anotherMatrix) {
         if (this.columns != anotherMatrix.rows) return null;
         Matrix newMatrix = new Matrix(this.rows, anotherMatrix.columns);
