@@ -1,8 +1,5 @@
 package com.step.sukhiboi.matrix;
 
-import java.util.Arrays;
-import java.util.Objects;
-
 public class Matrix {
     private final int rows;
     private final int columns;
@@ -25,7 +22,7 @@ public class Matrix {
 
     public Matrix add(Matrix anotherMatrix) {
         Matrix newMatrix = new Matrix(this.rows, this.columns);
-        if (!this.isSizeSame(anotherMatrix)) return null;
+        if (this.isNotSameSize(anotherMatrix)) return null;
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
                 newMatrix.values[i][j] = this.values[i][j] + anotherMatrix.values[i][j];
@@ -36,7 +33,7 @@ public class Matrix {
 
     public Matrix subtract(Matrix anotherMatrix) {
         Matrix newMatrix = new Matrix(this.rows, this.columns);
-        if (!this.isSizeSame(anotherMatrix)) return null;
+        if (this.isNotSameSize(anotherMatrix)) return null;
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
                 newMatrix.values[i][j] = this.values[i][j] - anotherMatrix.values[i][j];
@@ -91,8 +88,8 @@ public class Matrix {
         return true;
     }
 
-    private boolean isSizeSame(Matrix matrix) {
-        return this.rows == matrix.rows && this.columns == matrix.columns;
+    private boolean isNotSameSize(Matrix matrix) {
+        return this.rows != matrix.rows || this.columns != matrix.columns;
     }
 
     private Matrix getSubMatrix(int colId) {
@@ -128,7 +125,7 @@ public class Matrix {
         if (this == o) return true;
         if (!(o instanceof Matrix)) return false;
         Matrix matrix = (Matrix) o;
-        if (!this.isSizeSame(matrix)) return false;
+        if (this.isNotSameSize(matrix)) return false;
 
         for (int rows = 0; rows < this.rows; rows++) {
             for (int column = 0; column < this.columns; column++) {
@@ -139,12 +136,5 @@ public class Matrix {
         }
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(rows, columns);
-        result = 31 * result + Arrays.hashCode(values);
-        return result;
     }
 }
