@@ -3,7 +3,7 @@ package com.step.sukhiboi.matrix;
 public class Matrix {
   private final int rows;
   private final int columns;
-  private int[][] values;
+  private final int[][] values;
 
   public Matrix(int rows, int columns) {
     this.rows = rows;
@@ -11,7 +11,20 @@ public class Matrix {
     this.values = new int[rows][columns];
   }
 
+  private static boolean isValidMatrixValues(
+    int rows,
+    int columns,
+    int[][] values
+  ) {
+    if (values.length != rows) return false;
+    for (int row = 0; row < rows; row++) {
+      if (values[row].length != columns) return false;
+    }
+    return true;
+  }
+
   public static Matrix createMatrix(int rows, int columns, int[][] values) {
+    if (!isValidMatrixValues(rows, columns, values)) return null;
     Matrix newMatrix = new Matrix(rows, columns);
     for (int row = 0; row < rows; row++) {
       for (int cell = 0; cell < columns; cell++) {
