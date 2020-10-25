@@ -1,16 +1,41 @@
 package com.step.sukhiboi.matrix;
 
+/**
+ * This class can be used to create matrix with or without values.<br>
+ * It allows to perform some basic operations on matrices such as
+ * addition
+ * subtraction
+ * multiplication
+ * finding determinant
+ * equating 2 matrices
+ * printing matrix
+ */
 public class Matrix {
     private final int rows;
     private final int columns;
     private final int[][] values;
 
+    /**
+     * Creates a new null Matrix of provided rows and columns count.
+     *
+     * @param rows    count of rows
+     * @param columns count of columns
+     */
     public Matrix(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.values = new int[rows][columns];
     }
 
+    /**
+     * Creates a new Matrix of provided rows and columns count.<br>
+     * If values doesn't fit in the size of given matrix it will return null.
+     *
+     * @param rows    count of rows
+     * @param columns count of columns
+     * @param values  2d int array of values, with each sub array as a row
+     * @return Matrix
+     */
     public static Matrix createMatrix(int rows, int columns, int[][] values) {
         if (!isValidMatrixValues(rows, columns, values)) return null;
         Matrix newMatrix = new Matrix(rows, columns);
@@ -20,6 +45,13 @@ public class Matrix {
         return newMatrix;
     }
 
+    /**
+     * Return a new Matrix which is the sum of the current matrix and the passed matrix.<br>
+     * If the passed matrix is null or is of different size then the result will be null.
+     *
+     * @param anotherMatrix of Matrix
+     * @return Matrix
+     */
     public Matrix add(Matrix anotherMatrix) {
         if (isNotMatrixInstance(anotherMatrix)) return null;
         Matrix newMatrix = new Matrix(this.rows, this.columns);
@@ -32,6 +64,13 @@ public class Matrix {
         return newMatrix;
     }
 
+    /**
+     * Return a new Matrix which is the difference of the current matrix and the passed matrix.<br>
+     * If the passed matrix is null or is of different size then the result will be null.
+     *
+     * @param anotherMatrix of Matrix
+     * @return Matrix
+     */
     public Matrix subtract(Matrix anotherMatrix) {
         if (isNotMatrixInstance(anotherMatrix)) return null;
         Matrix newMatrix = new Matrix(this.rows, this.columns);
@@ -44,6 +83,13 @@ public class Matrix {
         return newMatrix;
     }
 
+    /**
+     * Return a new Matrix which is multiplication result of the current matrix and the passed matrix.<br>
+     * If the passed matrix is null or the column count doesn't match with the rows count of current matrix it will return null.
+     *
+     * @param anotherMatrix of Matrix
+     * @return Matrix
+     */
     public Matrix multiply(Matrix anotherMatrix) {
         if (isNotMatrixInstance(anotherMatrix)) return null;
         if (this.columns != anotherMatrix.rows) return null;
@@ -60,6 +106,12 @@ public class Matrix {
         return newMatrix;
     }
 
+    /**
+     * This wil return the determinant of the current matrix.<br>
+     * If the current matrix is not a square matrix then the result will be 0.
+     *
+     * @return determinant of the current matrix
+     */
     public int determinant() {
         if (this.rows != this.columns) return 0;
         if (this.rows == 2) {
@@ -114,6 +166,9 @@ public class Matrix {
         return subMatrix;
     }
 
+    /**
+     * Return the string representation of the current matrix
+     */
     @Override
     public String toString() {
         StringBuilder matrix = new StringBuilder();
@@ -127,6 +182,15 @@ public class Matrix {
         return "Matrix{" + "rows=" + rows + ", columns=" + columns + ", values=\n" + matrix + '}';
     }
 
+    /**
+     * This will check if the passed object is same as the current matrix, if yes it will return true else false.<br>
+     * Passed Object<br>
+     * - should be a instance of Matrix class<br>
+     * - should be of same size as of current matrix<br>
+     * - should have all values equal to the current matrix<br>
+     *
+     * @param o Any object
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
