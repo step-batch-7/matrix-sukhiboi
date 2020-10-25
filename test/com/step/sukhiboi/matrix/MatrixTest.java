@@ -174,4 +174,20 @@ public class MatrixTest {
             assertEquals(matrix1.determinant(), 0);
         }
     }
+
+    //createMatrix
+
+    @Test
+    public void shouldCreateAMatrixOfSpecifiedRowsAndColumnsWithProvidedValues() {
+        Matrix matrix1 = createMatrix(1, 2, new int[]{1, 2});
+        if (matrix1 != null) {
+            assertEquals("Matrix{rows=1, columns=2, values=\n1 2 \n}", matrix1.toString());
+        }
+    }
+
+    @Test
+    public void shouldReturnNullIfRowsAndColumnCountNotMatchWithProvidedValues() {
+        Matrix matrix1 = createMatrix(2, 2, new int[]{1, 2});
+        assertNull(matrix1);
+    }
 }
