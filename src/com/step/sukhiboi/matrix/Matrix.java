@@ -21,6 +21,7 @@ public class Matrix {
     }
 
     public Matrix add(Matrix anotherMatrix) {
+        if (isNotMatrixInstance(anotherMatrix)) return null;
         Matrix newMatrix = new Matrix(this.rows, this.columns);
         if (this.isNotSameSize(anotherMatrix)) return null;
         for (int i = 0; i < this.rows; i++) {
@@ -32,6 +33,7 @@ public class Matrix {
     }
 
     public Matrix subtract(Matrix anotherMatrix) {
+        if (isNotMatrixInstance(anotherMatrix)) return null;
         Matrix newMatrix = new Matrix(this.rows, this.columns);
         if (this.isNotSameSize(anotherMatrix)) return null;
         for (int i = 0; i < this.rows; i++) {
@@ -43,6 +45,7 @@ public class Matrix {
     }
 
     public Matrix multiply(Matrix anotherMatrix) {
+        if (isNotMatrixInstance(anotherMatrix)) return null;
         if (this.columns != anotherMatrix.rows) return null;
         Matrix newMatrix = new Matrix(this.rows, anotherMatrix.columns);
         for (int rows = 0; rows < this.rows; rows++) {
@@ -86,6 +89,10 @@ public class Matrix {
             if (values[row].length != columns) return false;
         }
         return true;
+    }
+
+    private boolean isNotMatrixInstance(Matrix anotherMatrix) {
+        return anotherMatrix == null;
     }
 
     private boolean isNotSameSize(Matrix matrix) {
