@@ -2,13 +2,13 @@ package com.step.sukhiboi.matrix;
 
 /**
  * This class can be used to create matrix with or without values.<br>
- * It allows to perform some basic operations on matrices such as
+ * <p>It allows to perform some basic operations on matrices such as
  * addition
  * subtraction
  * multiplication
  * finding determinant
  * equating 2 matrices
- * printing matrix
+ * printing matrix</p>
  */
 public class Matrix {
     private final int rows;
@@ -29,7 +29,7 @@ public class Matrix {
 
     /**
      * Creates a new Matrix of provided rows and columns count.<br>
-     * If values doesn't fit in the size of given matrix it will return null.
+     * <p>If values doesn't fit in the size of given matrix it will return null.</p>
      *
      * @param rows    count of rows
      * @param columns count of columns
@@ -45,9 +45,21 @@ public class Matrix {
         return newMatrix;
     }
 
+    private static boolean isValidMatrixValues(
+            int rows,
+            int columns,
+            int[][] values
+    ) {
+        if (values.length != rows) return false;
+        for (int row = 0; row < rows; row++) {
+            if (values[row].length != columns) return false;
+        }
+        return true;
+    }
+
     /**
      * Return a new Matrix which is the sum of the current matrix and the passed matrix.<br>
-     * If the passed matrix is null or is of different size then the result will be null.
+     * <p>If the passed matrix is null or is of different size then the result will be null.</p>
      *
      * @param anotherMatrix of Matrix
      * @return Matrix
@@ -66,7 +78,7 @@ public class Matrix {
 
     /**
      * Return a new Matrix which is the difference of the current matrix and the passed matrix.<br>
-     * If the passed matrix is null or is of different size then the result will be null.
+     * <p>If the passed matrix is null or is of different size then the result will be null.</p>
      *
      * @param anotherMatrix of Matrix
      * @return Matrix
@@ -85,7 +97,7 @@ public class Matrix {
 
     /**
      * Return a new Matrix which is multiplication result of the current matrix and the passed matrix.<br>
-     * If the passed matrix is null or the column count doesn't match with the rows count of current matrix it will return null.
+     * <p>If the passed matrix is null or the column count doesn't match with the rows count of current matrix it will return null.</p>
      *
      * @param anotherMatrix of Matrix
      * @return Matrix
@@ -108,7 +120,7 @@ public class Matrix {
 
     /**
      * This wil return the determinant of the current matrix.<br>
-     * If the current matrix is not a square matrix then the result will be 0.
+     * <p>If the current matrix is not a square matrix then the result will be 0.</p>
      *
      * @return determinant of the current matrix
      */
@@ -129,18 +141,6 @@ public class Matrix {
                     sign * this.values[0][col] * this.getSubMatrix(col).determinant();
         }
         return result;
-    }
-
-    private static boolean isValidMatrixValues(
-            int rows,
-            int columns,
-            int[][] values
-    ) {
-        if (values.length != rows) return false;
-        for (int row = 0; row < rows; row++) {
-            if (values[row].length != columns) return false;
-        }
-        return true;
     }
 
     private boolean isNotMatrixInstance(Matrix anotherMatrix) {
@@ -184,10 +184,10 @@ public class Matrix {
 
     /**
      * This will check if the passed object is same as the current matrix, if yes it will return true else false.<br>
-     * Passed Object<br>
+     * <p>Passed Object<br>
      * - should be a instance of Matrix class<br>
      * - should be of same size as of current matrix<br>
-     * - should have all values equal to the current matrix<br>
+     * - should have all values equal to the current matrix<br></p>
      *
      * @param o Any object
      */
